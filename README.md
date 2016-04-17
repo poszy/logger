@@ -24,5 +24,5 @@ Fedora 23+ x86_64: /usr/lib64/libxcb-record.so
 enable in /usr/X11/xorg.conf
 
 Lastly, Make the python module
-" Image " is installed. 
+" Image " is installed.  
 
