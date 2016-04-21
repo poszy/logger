@@ -2,8 +2,8 @@
 # for the admin tool to work correctly
 
 
-$initPyScript=$(python ./logger.py)
-$filterPyScript = $(python ./filter.py)
+$initPyScript   = $(python logger.py)
+$filterPyScript = $(python filter.py)
 
 echo "Starting Script.."
 echo "$initPyScript"

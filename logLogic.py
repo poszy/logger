@@ -14,12 +14,7 @@ def OnKeyPress(event):
     # for every 20 Characters written, write a new line
     #fileOpen.write(( ' '.join(textwrap.wrap(event.Key, 20))))
 
-    if event.Ascii == 32:
-
-        # instead of writting out an actual space,
-        # use this to find the word "space" and remove it from the file
-        # if a user types space, then the word will be known as an error
-        fileOpen.write('\n')
+    
 
     if event.Ascii == 96:
 
